@@ -1,0 +1,19 @@
+Encoding: UTF-8
+Package: conceptr
+Type: Package
+Title: Tools to work with concept hierarchies
+Description: A set of tools to work with data in concept hierarchies
+Version: 0.1
+Date: 2015-09-24
+Authors@R: c(person("Frans", "van Dunné", , "github@innovateonline.nl", c("aut", "cre")),
+           person("Innovate Online", role="cph")
+           )
+BugReports:https://github.com/fvd/conceptr/issues
+LazyData: TRUE
+Depends:
+    R (>= 3.1.0)
+Imports:
+    networkD3
+Suggests:
+    testthat
+License: MIT + file LICENCE

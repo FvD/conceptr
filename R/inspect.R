@@ -1,0 +1,21 @@
+#' Hierarchy Characteristics
+#'
+#' Aggregate all data to the level given by (level 1 for the highest level). The
+#' resulting data frame has column names as the aggregated columns.
+#'
+#' It needs to answer: are all classes filled / balanced down to the lowest hierarchical level? 
+
+inspect.hierarchy <- function(data, hierarchy) {
+  print("The aggregate function has not been implemented yet.")
+}
+
+#' Concept Characteristics
+#'
+#' Aggregate all data to the level given by (level 1 for the highest level). The
+#' resulting data frame has column names as the aggregated columns.
+#'
+#' It needs to answer: are all classes filled / balanced down to the lowest hierarchical level? 
+
+inspect.concept <- function(data, hierarchy) {
+  print("The aggregate function has not been implemented yet.")
+}
