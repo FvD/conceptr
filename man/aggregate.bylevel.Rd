@@ -6,6 +6,11 @@
 \usage{
 \method{aggregate}{bylevel}(data, hierarchy, level)
 }
+\arguments{
+\item{data}{Data object to be included}
+
+\item{hierarchy}{Data frame containing hierarchy data}
+}
 \description{
 Aggregate data by calling the top-level hierarchy that is required plus any
 additional columns to be included.

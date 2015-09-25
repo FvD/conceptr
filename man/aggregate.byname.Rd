@@ -4,12 +4,14 @@
 \alias{aggregate.byname}
 \title{Aggregate data by concept name}
 \usage{
-\method{aggregate}{byname}(data, hierarchy)
+\method{aggregate}{byname}(data, hierarchy, colname)
 }
 \arguments{
 \item{data}{Data object to be included}
 
 \item{hierarchy}{Data frame containing hierarchy data}
+
+\item{colname}{The column name that needs to be aggregated}
 }
 \description{
 Aggregate data by calling the top-level hierarchy that is required plus any
