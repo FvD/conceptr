@@ -34,18 +34,16 @@ visualize.byname <- function(data, hierarchy, name) {
 #' @param hierarchy
 #' @param names vector of three names to include in ternary diagram
 #' @export visualize.ternary
-visualize.ternary <- function(data, hierarchy, names) {
-  top   <- names[1]
-  left  <- names[2]
-  right <- names[3]
+visualize.ternary <- function(plot_categories, color="") {
+  one   <- aggregate.byname(data, hierarchy, plot_categories[1])[plot_categories[1]]
+  two   <- aggregate.byname(data, hierarchy, plot_categories[2])[plot_categories[2]]
+  three <- aggregate.byname(data, hierarchy, plot_categories[2])[plot_categories[3]]
+  plot_data <-  cbind(one, two, three, Ambiente)
+  colnames(plot_data) <- c("one", "two", "three", "Ambiente")
 
-  axis_1 <- aggregate.byname(data, hierarchy, top)[top]
-  axis_2 <- aggregate.byname(data, hierarchy, left)[left]
-  axis_3 <- aggregate.byname(data, hierarchy, right)[right]
-
-  plot_data <- cbind(axis_1, axis_2, axis_3)
-
-  p <- ggtern(data=plot_data, aes_string(x=top, y=left, z=right))
+  p <- ggtern(data=plot_data, aes(x=one, y=two, z=three, color=Ambiente))
   p <- p + theme_rgbw() + geom_point()
+  p <- p + xlab(plot_categories[1]) + ylab(plot_categories[2]) + zlab(plot_categories[3])
+  p
   return(p)
 }
