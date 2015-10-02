@@ -2,4 +2,6 @@
 
 export(aggregate.bylevel)
 export(aggregate.byname)
-export(visualize.network)
+export(visualize.bylevel)
+export(visualize.byname)
+export(visualize.ternary)

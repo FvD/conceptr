@@ -1,5 +1,4 @@
 # conceptr
-
 Concept hierarchies are common in all kinds of knowledge areas and applications
 of statistics. And they can be deceptively simple, or perhaps, annoyingly
 difficult to deal with.
@@ -20,10 +19,27 @@ can fix them.
     devtools::install_github("fvd/conceptr")
 
 ## Usage
+### Data formats
+The library is still a little bit primitive, and if you read this and actually use it let me know so that I can make things a little bit more generic.
+
+at the moment a number of conventions are imposed:
+
+1. The `hierarchy` dataframe has three columns with names `c("id","name", "parent_id")`
+2. The `hierarchy$name` column has to be normalized with `make.names`
+3. The `data` column names have to be normalized `colnames(data) <- make.names(colnames(data))`
+
+
+### Ternary plots
+Make exploratory analysis of the data at different levels easier by plotting by name. 
+
+    visualize.ternary(data, hierarchy, c("Pollen", "Spores", "Dinoflagellates"))
 
 
 ## Features
+### Implemented
+ 
 
+### Planned 
 
 ## Example data
 
