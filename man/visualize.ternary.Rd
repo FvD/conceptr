@@ -4,7 +4,7 @@
 \alias{visualize.ternary}
 \title{Visualize concept relationships by name}
 \usage{
-visualize.ternary(data, hierarchy, names)
+visualize.ternary(plot_categories, color)
 }
 \arguments{
 \item{data}{}

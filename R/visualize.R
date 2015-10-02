@@ -32,16 +32,19 @@ visualize.byname <- function(data, hierarchy, name) {
 #' the requested levels do not exist give a warning
 #' @param data
 #' @param hierarchy
-#' @param names vector of three names to include in ternary diagram
+#' @param plot_categories
+#' @param color
 #' @export visualize.ternary
-visualize.ternary <- function(plot_categories, color="") {
+visualize.ternary <- function(data, hierarchy, plot_categories, color) {
+  plot_legend <- color
+  plot_categories <- plot_categories
   one   <- aggregate.byname(data, hierarchy, plot_categories[1])[plot_categories[1]]
   two   <- aggregate.byname(data, hierarchy, plot_categories[2])[plot_categories[2]]
   three <- aggregate.byname(data, hierarchy, plot_categories[3])[plot_categories[3]]
-  plot_data <-  cbind(one, two, three, Ambiente)
-  colnames(plot_data) <- c("one", "two", "three", "Ambiente")
+  plot_data <-  cbind(one, two, three, plot_legend)
+  colnames(plot_data) <- c("one", "two", "three", "Legend")
 
-  p <- ggtern(data=plot_data, aes(x=one, y=two, z=three, color=Ambiente))
+  p <- ggtern(data=plot_data, aes(x=one, y=two, z=three, color=Legend))
   p <- p + theme_rgbw() + geom_point()
   p <- p + xlab(plot_categories[1]) + ylab(plot_categories[2]) + zlab(plot_categories[3])
   p
