@@ -37,7 +37,7 @@ visualize.byname <- function(data, hierarchy, name) {
 visualize.ternary <- function(plot_categories, color="") {
   one   <- aggregate.byname(data, hierarchy, plot_categories[1])[plot_categories[1]]
   two   <- aggregate.byname(data, hierarchy, plot_categories[2])[plot_categories[2]]
-  three <- aggregate.byname(data, hierarchy, plot_categories[2])[plot_categories[3]]
+  three <- aggregate.byname(data, hierarchy, plot_categories[3])[plot_categories[3]]
   plot_data <-  cbind(one, two, three, Ambiente)
   colnames(plot_data) <- c("one", "two", "three", "Ambiente")
 
