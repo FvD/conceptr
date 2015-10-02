@@ -11,35 +11,13 @@ library(dplyr)
 #' @param hierarchy Data frame containing hierarchy data
 #' @export aggregate.byname
 aggregate.all <- function(data, hierarchy) {
-  # Lookup children of colname and make a vector of child names
-  parent <- gsub(" ", ".", colname)
-  max_level <- max(hierarchy$id)
-
-  colnames(data) <- gsub(" ", ".", colnames(data))
-  colnames(hierarchy) <- c("id","name", "parent_id")
-  hierarchy$name <- gsub(" ", ".", hierarchy$name)
-
-  parentID <- hierarchy %>%
-    filter(name==parent) %>%
-    select(id)
-  parentID <- parentID[[1]]
-
-
- children = as.vector(childrenID$name)
-
-  # Sum parent + children with na.rm=TRUE
-  available_cols <- c(parent, children) %in% colnames(data)
-  selected_rows <- data %>%
-    select(one_of(c(parent, children)[available_cols])) %>%
-    transmute(hsum=rowSums(., na.rm=TRUE))
-
-  result <- data %>%
-    select(-one_of(c(parent, children)))  %>%
-    cbind(selected_rows)
-
-  names(result)[names(result)=="hsum"] <- paste(parent)
-
- return(result)
+  all_levels <- hierarchy$name
+  all_colls <- data[,0]
+  for(i in 1:length(all_levels)){
+    new_coll <- aggregate.byname(data, hierarchy, all_levels[i])[all_levels[i]]
+    all_colls <- cbind(all_colls, new_coll)
+  }
+  return(all_colls)
 }
 
 #' Aggregate data by concept name

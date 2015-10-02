@@ -4,14 +4,16 @@
 \alias{visualize.ternary}
 \title{Visualize concept relationships by name}
 \usage{
-visualize.ternary(plot_categories, color)
+visualize.ternary(data, hierarchy, plot_categories, color)
 }
 \arguments{
 \item{data}{}
 
 \item{hierarchy}{}
 
-\item{names}{vector of three names to include in ternary diagram}
+\item{plot_categories}{}
+
+\item{color}{}
 }
 \description{
 Get all the variables at the given level (level 1 for the highest level). If
