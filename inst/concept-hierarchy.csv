@@ -1,13 +1,15 @@
 "id","name","parent_id"
-1,"Amorphous",0
-2,"Palynomorphs",0
-3,"Humic matter",0
-4,"Cuticles",0
-5,"Sapropelic",1
-6,"Fine grained",1
-7,"Pollen",2
-8,"Spores",2
-9,"Dinoflagellates",2
-10,"Acritarchs",2
-11,"Brown to opaque woody",3
-12,"Coaly fragments",11
+1,"Level1-A",0
+2,"Level1-B",0
+3,"Level1-C",0
+4,"Level1-D",0
+5,"Level2-AA",1
+6,"Level2-AB",1
+7,"Level2-BA",2
+8,"Level2-BB",2
+9,"Level2-BC",2
+10,"Level2-BD",2
+11,"Level2-CA",3
+12,"Level3-CAA",11
+13,"Level3-CAB",11
+14,"Level4-CABA",13
