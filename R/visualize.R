@@ -9,8 +9,8 @@ library(ggtern)
 #' @param data
 #' @param hierarchy
 #' @param level
-#' @export visualize.bylevel
-visualize.bylevel <- function(data, hierarchy, level) {
+#' @export visualize_bylevel
+visualize_bylevel <- function(data, hierarchy, level) {
   print("The visualize.network function has not been implemented yet.")
 }
 
@@ -21,8 +21,8 @@ visualize.bylevel <- function(data, hierarchy, level) {
 #' @param data
 #' @param hierarchy
 #' @param name name of highest level concept to visualize
-#' @export visualize.byname
-visualize.byname <- function(data, hierarchy, name) {
+#' @export visualize_byname
+visualize_byname <- function(data, hierarchy, name) {
   print("The visualize.network function has not been implemented yet.")
 }
 
@@ -34,8 +34,8 @@ visualize.byname <- function(data, hierarchy, name) {
 #' @param hierarchy
 #' @param plot_categories
 #' @param color
-#' @export visualize.ternary
-visualize.ternary <- function(data, hierarchy, plot_categories, color) {
+#' @export visualize_ternary
+visualize_ternary <- function(data, hierarchy, plot_categories, color) {
   plot_legend <- color
   plot_categories <- plot_categories
   one   <- aggregate_byname(data, hierarchy, plot_categories[1])[plot_categories[1]]

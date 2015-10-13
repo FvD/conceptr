@@ -5,7 +5,7 @@
 #'
 #' It needs to answer: are all classes filled / balanced down to the lowest hierarchical level? 
 
-inspect.hierarchy <- function(data, hierarchy) {
+inspect_hierarchy <- function(data, hierarchy) {
   print("The aggregate function has not been implemented yet.")
 }
 
@@ -16,6 +16,6 @@ inspect.hierarchy <- function(data, hierarchy) {
 #'
 #' It needs to answer: are all classes filled / balanced down to the lowest hierarchical level? 
 
-inspect.concept <- function(data, hierarchy) {
+inspect_concept <- function(data, hierarchy) {
   print("The aggregate function has not been implemented yet.")
 }
