@@ -75,12 +75,12 @@ aggregate_bylevel <- function(data, hierarchy, level) {
   print("The aggregate_bylevel function has not been implemented yet.")
 }
 
-#' get_children by name
-#'
-#' Returns a data.frame with all children of a named concept.
-#'
-#' @param data Data object to be included
-#' @param hierarchy Data frame containing hierarchy data
+# get_children by name
+#
+# Returns a data.frame with all children of a named concept.
+#
+# @param data Data object to be included
+# @param hierarchy Data frame containing hierarchy data
 get_children <- function(hierarchy, parent){
 
  hierarchy$name <- make.names(hierarchy$name)
