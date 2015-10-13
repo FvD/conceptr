@@ -5,7 +5,7 @@ Title: Tools to work with concept hierarchies
 Description: A set of tools to work with multilelevel classes or multilevel features
        presented as concept hierarchies.
 Version: 0.1
-Date: 2015-09-24
+Date: 2015-10-13
 Authors@R: c(person("Frans", "van Dunné", , "github@innovateonline.nl", c("aut", "cre")),
            person("Innovate Online", role="cph")
            )
