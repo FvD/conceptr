@@ -15,8 +15,8 @@ and inventories. A typical example would be as follows:
     Level4:                          CABA
 
 This kind of tree structure can be used for instance on hierarchies such as
-tree > Oak > White Oak. Or Technical Skills > Programming > R, or Sales > EMEA
-> Europe > Lithuania. These are also called multilevel classes, or multilevel
+tree > Oak > White Oak. Or Technical Skills > Programming > R, or Sales > EMEA > 
+Europe > Lithuania. These are also called multilevel classes, or multilevel
 features (in Machine Learning applications). 
 
 The package `conceptr` package hopes to help you when you need to work with
