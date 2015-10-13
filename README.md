@@ -1,15 +1,35 @@
 # conceptr
-Concept hierarchies are common in all kinds of knowledge areas and applications
-of statistics. And they can be deceptively simple, or perhaps, annoyingly
-difficult to deal with.
+Concept hierarchies are common in many knowledge areas and applications
+of statistics. They can be deceptively simple, as they are easy to intuit, but can offer annoying problems while working with them as data set. 
 
-This package was made with a different concept hierarchy in mind, that of
-Palynofacies data. The basic ideas however, should be the same where we need to
-work with data that is presented as multilevel classes, or presents multilevel
-features. This package hopes to help you when you need to work with these kinds
-of data by allowing you to visualize the hierarchies themselves, but also to
-check the data agains the hierarchies and allow operations such as aggregation
-by level or aggregation by (super) class.
+This package was made with a a specific concept hierarchy in mind, one that is
+often found in biological data, in competency data (Human Resource Management)
+and inventories. A typical example would be as follows:
+
+    Level1:      A           B           C          D
+                 |           |           |     
+    Level2:    AA AB      BA BB BD      CA    
+               |                         |
+    Level3:   AAA                     CAA CAB
+                                       |
+    Level4:                          CABA
+
+This kind of tree structure can be used for instance on hierarchies such as
+tree > Oak > White Oak. Or Technical Skills > Programming > R, or Sales > EMEA
+> Europe > Lithuania. These are also called multilevel classes, or multilevel
+features (in Machine Learning applications). 
+
+The package `conceptr` package hopes to help you when you need to work with
+these kinds of data by allowing you to make the hierarchy corresponding to the
+data explicit so that it becomes easier to:
+
+1. Roll-up data into higher order concepts, even if they are implied but not
+   included inthe data set itself. For example, you have White Oaks and
+   Chihuaha Oaks, but no entry for "Oaks". That higher order concept "Oak" is
+   implicit in the data set and can be added by summing sub-level concept.
+2. Visualize the hierarchies as a tree using network3D.
+3. Inspect the dat to see whether it conforms with the given hierarchy
+4. Visualize data in the hierarchy using ternary diagrams.
 
 ## Installation
 The package is still far from complete, so please be mindful of errors if you
@@ -35,17 +55,6 @@ At the moment a number of conventions are imposed:
 Note that to match the names in the hierarchy and data dataframes both the
 `hierarchy$name` column and column names in `data` will be normalized with
 `make.names`.
-
-In the test data we use the following example hierarchy to which we will refer
-below in the usage section:
-
-    Level1:      A         B         C      D
-                 |         |         |     
-    Level2:    AA AB    BA BB BD    CA    
-               |                   |
-    Level3:   AAA               CAA CAB
-                                 |
-    Level4:                    CABA
 
 
 ## Features

@@ -13,10 +13,12 @@ library(dplyr)
 aggregate_all <- function(data, hierarchy) {
   all_levels <- make.names(hierarchy$name)
   all_colls <- data[,0]
+
   for(i in 1:length(all_levels)){
     new_coll <- aggregate_byname(data, hierarchy, all_levels[i])[all_levels[i]]
     all_colls <- cbind(all_colls, new_coll)
   }
+
   return(all_colls)
 }
 
