@@ -2,9 +2,12 @@
 Concept hierarchies are common in many knowledge areas and applications
 of statistics. They can be deceptively simple, as they are easy to intuit, but can offer annoying problems while working with them as data set. 
 
-This package was made with a a specific concept hierarchy in mind, one that is
-often found in biological data, in competency data (Human Resource Management)
-and inventories. A typical example would be as follows:
+This package was made with a specific concept hierarchy in mind where the
+hierarchy is represented by a table with id, concept-name and parent-id. This
+structure that is often found in biological data, in competency data (Human 
+Resource Management) and business-inventories. 
+
+A typical example could be as follows:
 
     Level1:      A           B           C          D
                  |           |           |     
@@ -24,11 +27,11 @@ these kinds of data by allowing you to make the hierarchy corresponding to the
 data explicit so that it becomes easier to:
 
 1. Roll-up data into higher order concepts, even if they are implied but not
-   included inthe data set itself. For example, you have White Oaks and
+   included in the data set itself. For example, you have White Oaks and
    Chihuaha Oaks, but no entry for "Oaks". That higher order concept "Oak" is
    implicit in the data set and can be added by summing sub-level concept.
 2. Visualize the hierarchies as a tree using network3D.
-3. Inspect the dat to see whether it conforms with the given hierarchy
+3. Inspect the data to see whether it conforms with the given hierarchy
 4. Visualize data in the hierarchy using ternary diagrams.
 
 ## Installation
@@ -47,12 +50,12 @@ can be made more generic.
 
 At the moment a number of conventions are imposed:
 
-1. The `hierarchy` dataframe has three columns with names `c("id","name",
+1. The `hierarchy` data frame has three columns with names `c("id","name",
    "parent_id")`
-1. The column names in the `data` dataframe need to match the names in
+1. The column names in the `data` data frame need to match the names in
    `hierarachy$name` 
 
-Note that to match the names in the hierarchy and data dataframes both the
+Note that to match the names in the hierarchy and data data frames both the
 `hierarchy$name` column and column names in `data` will be normalized with
 `make.names`.
 
@@ -77,7 +80,7 @@ etc.
 Make exploratory analysis of the data at different levels easier by plotting by
 name. 
 
-    visualize.ternary(data, hierarchy, c("A", "BA", "CAA"))
+    visualize_ternary(data, hierarchy, c("A", "BA", "CAA"))
  
 ### Planned 
 
