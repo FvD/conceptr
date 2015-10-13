@@ -59,7 +59,7 @@ test_that("aggregation of multiple columns is correct", {
 
 test_that("aggregation of with empty (NA) columns is correct", {
   aggregated_Level1C <- aggregate_byname(data, hierarchy, "Level1.C")
-  aggregated_Level1C <- aggregated_Level1A$Level1.A
+  aggregated_Level1C <- aggregated_Level1C$Level1.C
   expect_that(aggregated_Level1C[1], equals(sum(data$Level1.C[1],
                                                 data$Level2.CA[1],
                                                 data$Level3.CAA[1],
