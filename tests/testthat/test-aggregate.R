@@ -5,7 +5,7 @@ hierarchy <- read.csv(system.file("concept-hierarchy.csv", package="conceptr"))
 
 
 test_that("aggregation of single column is correct", {
-  aggregated_level1D <- aggregate.byname(data, hierarchy, "Level1.D")
+  aggregated_level1D <- aggregate_byname(data, hierarchy, "Level1.D")
   aggregated_level1D <- aggregated_level1D$Level1.D
   #aggregated_cuticles <- data$Cuticles
   expect_that(aggregated_level1D[1], equals(data$Level1.D[1]))
@@ -18,11 +18,11 @@ test_that("aggregation of single column is correct", {
 })
 
 test_that("there is an error for non-existing name", {
-  aggregated_level1D <- aggregate.byname(data, hierarchy, "Level1-D")
+  aggregated_level1D <- aggregate_byname(data, hierarchy, "Level1-D")
 })
 
 test_that("aggregation of multiple columns is correct", {
-  aggregated_Level1A <- aggregate.byname(data, hierarchy, "Level1.A")
+  aggregated_Level1A <- aggregate_byname(data, hierarchy, "Level1.A")
   aggregated_Level1A <- aggregated_Level1A$Level1.A
   expect_that(aggregated_Level1A[1], equals(sum(data$Level1.A[1],
                                                 data$Level2.AA[1],
@@ -58,7 +58,7 @@ test_that("aggregation of multiple columns is correct", {
 })
 
 test_that("aggregation of with empty (NA) columns is correct", {
-  aggregated_Level1C <- aggregate.byname(data, hierarchy, "Level1.C")
+  aggregated_Level1C <- aggregate_byname(data, hierarchy, "Level1.C")
   aggregated_Level1C <- aggregated_Level1A$Level1.A
   expect_that(aggregated_Level1C[1], equals(sum(data$Level1.C[1],
                                                 data$Level2.CA[1],

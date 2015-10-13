@@ -9,12 +9,12 @@ library(dplyr)
 #' of the Class ID, Class Name and Parent ID.
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
-#' @export aggregate.byname
-aggregate.all <- function(data, hierarchy) {
+#' @export aggregate_byname
+aggregate_all <- function(data, hierarchy) {
   all_levels <- make.names(hierarchy$name)
   all_colls <- data[,0]
   for(i in 1:length(all_levels)){
-    new_coll <- aggregate.byname(data, hierarchy, all_levels[i])[all_levels[i]]
+    new_coll <- aggregate_byname(data, hierarchy, all_levels[i])[all_levels[i]]
     all_colls <- cbind(all_colls, new_coll)
   }
   return(all_colls)
@@ -30,8 +30,8 @@ aggregate.all <- function(data, hierarchy) {
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
 #' @param colname The column name that needs to be aggregated
-#' @export aggregate.byname
-aggregate.byname <- function(data, hierarchy, colname) {
+#' @export aggregate_byname
+aggregate_byname <- function(data, hierarchy, colname) {
   # Lookup children of colname and make a vector of child names
   parent_name <- make.names(colname)
   max_level <- max(hierarchy$id)
@@ -70,9 +70,9 @@ aggregate.byname <- function(data, hierarchy, colname) {
 #' of the Class ID, Class Name and Parent ID.
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
-#' @export aggregate.bylevel
-aggregate.bylevel <- function(data, hierarchy, level) {
-  print("The aggregate.bylevel function has not been implemented yet.")
+#' @export aggregate_bylevel
+aggregate_bylevel <- function(data, hierarchy, level) {
+  print("The aggregate_bylevel function has not been implemented yet.")
 }
 
 #' get_children by name

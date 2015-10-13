@@ -38,9 +38,9 @@ visualize.byname <- function(data, hierarchy, name) {
 visualize.ternary <- function(data, hierarchy, plot_categories, color) {
   plot_legend <- color
   plot_categories <- plot_categories
-  one   <- aggregate.byname(data, hierarchy, plot_categories[1])[plot_categories[1]]
-  two   <- aggregate.byname(data, hierarchy, plot_categories[2])[plot_categories[2]]
-  three <- aggregate.byname(data, hierarchy, plot_categories[3])[plot_categories[3]]
+  one   <- aggregate_byname(data, hierarchy, plot_categories[1])[plot_categories[1]]
+  two   <- aggregate_byname(data, hierarchy, plot_categories[2])[plot_categories[2]]
+  three <- aggregate_byname(data, hierarchy, plot_categories[3])[plot_categories[3]]
   plot_data <-  cbind(one, two, three, plot_legend)
   colnames(plot_data) <- c("one", "two", "three", "Legend")
 

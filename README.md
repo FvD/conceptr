@@ -51,15 +51,15 @@ below in the usage section:
 ## Features
 ### Aggregate by name
 Aggregate all data from all the sub-levels of a concept by summing the
-observations. So in the example `aggregate.byname(D)` returns `D` and
-`aggregate.byname(B)` returns `B+BA+BB+BD`. We need to reference the hierarchy
+observations. So in the example `aggregate_byname(D)` returns `D` and
+`aggregate_byname(B)` returns `B+BA+BB+BD`. We need to reference the hierarchy
 to use so the full example would be:
 
-     aggregate.byname(data, hierarchy, "Level1-D")
+     aggregate_byname(data, hierarchy, "Level1-D")
  
 and
 
-    aggregate.byname(data, hierarchy, "Level1-B")
+    aggregate_byname(data, hierarchy, "Level1-B")
 
 The full names in the test data base include the levels, so Level1-A, Level2-AA
 etc.
