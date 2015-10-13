@@ -11,7 +11,7 @@ library(dplyr)
 #' @param hierarchy Data frame containing hierarchy data
 #' @export aggregate.byname
 aggregate.all <- function(data, hierarchy) {
-  all_levels <- hierarchy$name
+  all_levels <- make.names(hierarchy$name)
   all_colls <- data[,0]
   for(i in 1:length(all_levels)){
     new_coll <- aggregate.byname(data, hierarchy, all_levels[i])[all_levels[i]]
@@ -33,12 +33,12 @@ aggregate.all <- function(data, hierarchy) {
 #' @export aggregate.byname
 aggregate.byname <- function(data, hierarchy, colname) {
   # Lookup children of colname and make a vector of child names
-  parent_name <- gsub(" ", ".", colname)
+  parent_name <- make.names(colname)
   max_level <- max(hierarchy$id)
 
-  colnames(data) <- gsub(" ", ".", colnames(data))
+  colnames(data) <- make.names(colnames(data))
   colnames(hierarchy) <- c("id","name", "parent_id")
-  hierarchy$name <- gsub(" ", ".", hierarchy$name)
+  hierarchy$name <- make.names(hierarchy$name)
 
   root_parent <- hierarchy %>%
     filter(name==parent_name)
@@ -82,6 +82,8 @@ aggregate.bylevel <- function(data, hierarchy, level) {
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
 get_children <- function(hierarchy, parent){
+
+ hierarchy$name <- make.names(hierarchy$name)
 
  children   <- data.frame("id"=NA, "name"=NA, "parent_id"=NA)[0,]
  new_parent <- data.frame("id"=NA, "name"=NA, "parent_id"=NA)[0,]
