@@ -9,9 +9,9 @@ library(ggtern)
 #' @param data
 #' @param hierarchy
 #' @param level
-#' @export visualize_bylevel
-visualize_bylevel <- function(data, hierarchy, level) {
-  print("The visualize.network function has not been implemented yet.")
+#' @export visualize_atlevel
+visualize_atlevel <- function(data, hierarchy, level) {
+  print("The visualize_atlevelfunction has not been implemented yet.")
 }
 
 #' Visualize concept hierarchy by name
@@ -23,7 +23,7 @@ visualize_bylevel <- function(data, hierarchy, level) {
 #' @param name name of highest level concept to visualize
 #' @export visualize_byname
 visualize_byname <- function(data, hierarchy, name) {
-  print("The visualize.network function has not been implemented yet.")
+  print("The visualize_byname function has not been implemented yet.")
 }
 
 #' Visualize concept relationships by name

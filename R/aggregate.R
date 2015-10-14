@@ -72,9 +72,9 @@ aggregate_byname <- function(data, hierarchy, colname) {
 #' of the Class ID, Class Name and Parent ID.
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
-#' @export aggregate_bylevel
-aggregate_bylevel <- function(data, hierarchy, level) {
-  print("The aggregate_bylevel function has not been implemented yet.")
+#' @export aggregate_atlevel
+aggregate_atlevel <- function(data, hierarchy, level) {
+  print("The aggregate_atlevel function has not been implemented yet.")
 }
 
 # get_children by name

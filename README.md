@@ -1,6 +1,7 @@
 # conceptr
-Concept hierarchies are common in many knowledge areas and applications
-of statistics. They can be deceptively simple, as they are easy to intuit, but can offer annoying problems while working with them as data set. 
+Concept hierarchies are common in many knowledge areas and applications of
+statistics. They can be deceptively simple, as they are easy to intuit, but can
+offer annoying problems while working with them as data set. 
 
 This package was made with a specific concept hierarchy in mind where the
 hierarchy is represented by a table with id, concept-name and parent-id. This
@@ -22,9 +23,9 @@ tree > Oak > White Oak. Or Technical Skills > Programming > R, or Sales > EMEA >
 Europe > Lithuania. These are also called multilevel classes, or multilevel
 features (in Machine Learning applications). 
 
-The package `conceptr` package hopes to help you when you need to work with
-these kinds of data by allowing you to make the hierarchy corresponding to the
-data explicit so that it becomes easier to:
+The goal of the package `conceptr` package is to help you when you need to work
+with these kinds of data by allowing you to make the hierarchy corresponding to
+the data explicit so that it becomes easier to:
 
 1. Roll-up data into higher order concepts, even if they are implied but not
    included in the data set itself. For example, you have White Oaks and
@@ -59,7 +60,6 @@ Note that to match the names in the hierarchy and data data frames both the
 `hierarchy$name` column and column names in `data` will be normalized with
 `make.names`.
 
-
 ## Features
 ### Aggregate by name
 Aggregate all data from all the sub-levels of a concept by summing the
@@ -83,6 +83,9 @@ name.
     visualize_ternary(data, hierarchy, c("A", "BA", "CAA"))
  
 ### Planned 
+
+* Visualize hierarchy (create tree with network3D)
+* Inspect hierarchy (check the structure of the hierarchy)
 
 ## Example data
 There is a small example data set included that you can compare to your own.

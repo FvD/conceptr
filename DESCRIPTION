@@ -2,7 +2,7 @@ Encoding: UTF-8
 Package: conceptr
 Type: Package
 Title: Tools to work with concept hierarchies
-Description: A set of tools to work with multilelevel classes or multilevel features
+Description: Tools to work with multilevel classes or multilevel features
        presented as concept hierarchies.
 Version: 0.1
 Date: 2015-10-13
