@@ -9,7 +9,7 @@ library(dplyr)
 #' of the Class ID, Class Name and Parent ID.
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
-#' @export aggregate_byname
+#' @export aggregate_all
 aggregate_all <- function(data, hierarchy) {
   all_levels <- make.names(hierarchy$name)
   all_colls <- data[,0]
@@ -50,31 +50,49 @@ aggregate_byname <- function(data, hierarchy, colname) {
 
   # Sum parent + children with na.rm=TRUE
   available_cols <- c(parent_name, children) %in% colnames(data)
-  selected_rows <- data %>%
-    select(one_of(c(parent_name, children)[available_cols])) %>%
-    transmute(hsum=rowSums(., na.rm=TRUE))
-
+  if(available_cols){
+    selected_rows <- data %>%
+      select(one_of(c(parent_name, children)[available_cols])) %>%
+      transmute(hsum=rowSums(., na.rm=TRUE))
   result <- data %>%
     select(-one_of(c(parent_name, children)))  %>%
     cbind(selected_rows)
 
   names(result)[names(result)=="hsum"] <- paste(parent_name)
-
+  } else {
+  warning("No data available for the selected concepts")
+  result <- data
+}
  return(result)
 }
 
 #' Aggregate at level
 #'
-#' Aggregate data by calling the top-level hierarchy that is required plus any
-#' additional columns to be included.
+#' Aggregate data at the requested level. The requested level will be the
+#' cut-off point so that any levels below will be rolled up to the requested
+#' level, and any levels above will remain as they are.
 #'
 #' Note that a hierarchy data frame is required, which is a data frame consisting
 #' of the Class ID, Class Name and Parent ID.
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
+#' @param level The level of interest
 #' @export aggregate_atlevel
 aggregate_atlevel <- function(data, hierarchy, level) {
-  print("The aggregate_atlevel function has not been implemented yet.")
+  # Get the names of the concepts at the requested level
+  selected_columns <- hierarchy %>%
+    filter(parent_id==level)
+
+  column_names <- as.vector(make.names(selected_columns$name))
+
+  # Roll up the data to the names at the requested level
+  result <- data
+  for(i in 1:length(column_names)){
+    result <- result %>%
+       aggregate_byname(hierarchy, column_names[i])
+  }
+
+  return(result)
 }
 
 # get_children by name

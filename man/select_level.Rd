@@ -6,8 +6,19 @@
 \usage{
 select_level(data, hierarchy, level)
 }
+\arguments{
+\item{data}{The data set}
+
+\item{hierarchy}{The hierachy definitoin}
+
+\item{level}{The level of interest}
+}
 \description{
 Get all the variables at the given level (level 1 for the highest level). If
-the requested levels do not exist give a warning
+the requested level does not exist give a warning.
+}
+\details{
+Note that you are only selecting, not aggregating. If you want to roll-up
+to any given level, use the aggregate_bylevel function instead.
 }
 
