@@ -61,7 +61,7 @@ Note that to match the names in the hierarchy and data data frames both the
 `make.names`.
 
 ## Features
-### Aggregate by name
+### Aggregate data
 Aggregate all data from all the sub-levels of a concept by summing the
 observations. So in the example `aggregate_byname(D)` returns `D` and
 `aggregate_byname(B)` returns `B+BA+BB+BD`. We need to reference the hierarchy
@@ -76,7 +76,11 @@ and
 The full names in the test data base include the levels, so Level1-A, Level2-AA
 etc.
 
-### Ternary plots
+### Visualize hierchies
+
+![example network diagram](https://raw.githubusercontent.com/FvD/conceptr/gh-pages/images/visualize_networkD3.png)
+
+### Plot selected concepts
 Make exploratory analysis of the data at different levels easier by plotting by
 name. 
 
