@@ -17,6 +17,7 @@ Imports:
     networkD3,
     dplyr,
     ggtern
+    jsonlite
 Suggests:
     testthat
 License: MIT + file LICENCE

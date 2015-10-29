@@ -7,6 +7,7 @@ library(dplyr)
 #'
 #' Note that a hierarchy data frame is required, which is a data frame consisting
 #' of the Class ID, Class Name and Parent ID.
+#'
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
 #' @export aggregate_all
@@ -29,13 +30,14 @@ aggregate_all <- function(data, hierarchy) {
 #'
 #' Note that a hierarchy data frame is required, which is a data frame consisting
 #' of the Class ID, Class Name and Parent ID.
+#'
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
-#' @param colname The column name that needs to be aggregated
+#' @param concept The concept name (column name) that needs to be aggregated
 #' @export aggregate_byname
-aggregate_byname <- function(data, hierarchy, colname) {
+aggregate_byname <- function(data, hierarchy, concept) {
   # Lookup children of colname and make a vector of child names
-  parent_name <- make.names(colname)
+  parent_name <- make.names(concept)
   max_level <- max(hierarchy$id)
 
   colnames(data) <- make.names(colnames(data))

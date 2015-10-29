@@ -1,5 +1,20 @@
 library(networkD3)
 library(ggtern)
+library(jsonlite)
+
+#' Create json formatted hierarchy
+#'
+#' To work with networD3 we need the hierarchy as a json formatted document.
+#' This function takes the hierachy table and converts it to the required json
+#' format.
+#'
+#' It accepts a level in case a lower level structure is required for the
+#' visualization
+#' @param hierarchy
+#' @param level
+visualize_jsonify <- function(hierarchy, level) {
+  print("The visualize_atlevelfunction has not been implemented yet.")
+}
 
 #' Visualize concept hierarchy by level
 #'
