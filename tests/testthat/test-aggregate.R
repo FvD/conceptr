@@ -5,7 +5,6 @@ context("Aggregate_all")
 data <- read.csv(system.file("data.csv", package="conceptr"))
 hierarchy <- read.csv(system.file("concept-hierarchy.csv", package="conceptr"))
 
-
 test_that("aggregation of single column is correct", {
   aggregated_data <- aggregate_all(data, hierarchy)
   aggregated_level1D <- aggregated_data$Level1.D
