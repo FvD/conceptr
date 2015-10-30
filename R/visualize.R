@@ -12,9 +12,16 @@ library(jsonlite)
 #' visualization
 #' @param hierarchy
 #' @param level
-visualize_jsonify <- function(hierarchy, level) {
-  print("The visualize_atlevelfunction has not been implemented yet.")
-}
+visualize_create_list <- function(hierarchy, level) {
+  hierarchy$name <- make.names(hierarchy$name)
+  max_depth <- max(hierarchy$parent_id)
+
+  listoflists <- list(name="")
+
+  for(i in 1:max_depth)){
+  }
+
+  }
 
 #' Visualize concept hierarchy by level
 #'
