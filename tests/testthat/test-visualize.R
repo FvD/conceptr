@@ -58,3 +58,16 @@ jsonified_l1 <- toJSON(list_one)
 jsonified_l2 <- toJSON(list_two)
 jsonified_l1 == jsonified_l2
 # >[1] TRUE
+#
+list_three <- list(name="")
+
+list_four <- list(name="")
+list_four$children[[1]] <- list(name="Level1-A")
+list_four$children[[2]] <- list(name="Level1-B")
+list_four$children[[3]] <- list(name="Level1-C")
+list_four$children[[4]] <- list(name="Level1-D")
+
+new <- paste("listoflist$children", "[[", i, "]]", " <- ", "list(name='", name, "')", sep="")
+
+list_four$children[[1]]$children[[1]] <- list(name="Level1-AA")
+
