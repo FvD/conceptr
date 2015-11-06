@@ -1,7 +1,3 @@
-library(networkD3)
-library(ggtern)
-library(jsonlite)
-
 #' Add Child ID to self-referential table
 #'
 #' @param hierarchy
@@ -43,6 +39,7 @@ add_child_id <-  function(hierarchy){
 #' visualization
 #' @param hierarchy
 #' @param level
+#' @import dplyr
 create_list <- function(hierarchy, level=1) {
   hierarchy$name <- make.names(hierarchy$name)
 
@@ -57,25 +54,23 @@ create_list <- function(hierarchy, level=1) {
   max_id <- max(list_hierarchy$id)
   level_index <- 1
 
-  # Get level_1 as reference
- new_hierarchy[new_hierarchy$parent_id==0, "level"] <- level_index
- parent_level <- dplyr::filter(list_hierarchy, parent_id==0)
- list_hierarchy <- dplyr::filter(list_hierarchy, parent_id!=0)
+ # Get level_1 as reference
+ new_hierarchy[new_hierarchy$parent_id == 0, "level"] <- level_index
+ parent_level <- dplyr::filter(list_hierarchy, parent_id == 0)
+ list_hierarchy <- dplyr::filter(list_hierarchy, parent_id != 0)
 
   # get next levels until there are not more records
-  while(nrow(list_hierarchy) > 0){
-    level_index = 1 + level_index
-    new_parent_level <- parent_level[0,]
-    for(i in 1:max_id){
-      if(i %in% parent_level$child_id){
-         new_hierarchy[new_hierarchy$id==i, "level"] <- level_index
+  while (nrow(list_hierarchy) > 0) {
+    level_index <- 1 + level_index
+    new_parent_level <- parent_level[0, ]
+    for (i in 1:max_id) {
+      if (i %in% parent_level$child_id) {
+         new_hierarchy[new_hierarchy$id == i, "level"] <- level_index
       #   current_parent_id <- dplyr::filter(current_parent_id, id!=i)
-         new_rows <- dplyr::filter(list_hierarchy, id==i)
+         new_rows <- dplyr::filter(list_hierarchy, id == i)
          new_parent_level <- rbind(new_parent_level, new_rows)
-         list_hierarchy <- dplyr::filter(list_hierarchy, id!=i)
-      }else{
-      print("Warning, item outside of parent level")
-        }
+         list_hierarchy <- dplyr::filter(list_hierarchy, id != i)
+      }
     }
     parent_level <- new_parent_level
   }
@@ -154,7 +149,9 @@ return(listoflists)
 #'
 #' @param hierarchy_as_list Hierarchy as a list of lists
 #' @export jsonify
+#' @importFrom jsonlite toJSON
 jsonify <- function(hierarchy_as_list){
   hierarchy_as_json <- toJSON(hierarchy_as_list)
+  return(hierarchy_as_json)
 }
 
