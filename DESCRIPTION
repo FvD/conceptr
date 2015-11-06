@@ -16,7 +16,7 @@ Depends:
 Imports:
     networkD3,
     dplyr,
-    ggtern
+    ggtern,
     jsonlite
 Suggests:
     testthat
