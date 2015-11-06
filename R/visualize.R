@@ -81,6 +81,9 @@ create_list <- function(hierarchy, level=1) {
     parent_level <- new_parent_level
   }
 
+#------------------------------------------------------------------------------
+# Use found levels to create list of lists
+
  join_hierarchy <- new_hierarchy %>%
    select(id, level) %>%
    distinct()
@@ -88,29 +91,60 @@ create_list <- function(hierarchy, level=1) {
  hierarchy <- hierarchy %>%
     left_join(join_hierarchy, by=c("id"="id"))
 
- listoflists <- list(name="")
- max_level <- max(hierarchy$level)
- try{
-  for(i in 1:max_level) {
-  current_level <- dplyr::filter(hierarchy, level==i)
-  level_string <- ""
-  # create children to the correct depth
-  for(c in 1:i){
-    level_string <- paste(level_string, "$children", sep="")
-  }
-  # Append the levels using the level_string as the position
-  # cat("current level with parent_id = ", i, "\n")
-    if(nrow(current_level) > 0){
-      for(j in 1:nrow(current_level)){
+ child_hierarchy <- new_hierarchy %>%
+   left_join(hierarchy, by=c("child_id"="id"))
 
-        cat("current level, ", i, " index =", j, "\n")
-        new <- paste("listoflists", level_string, "[[", j, "]]", " <- ", "list(name='", current_level$name[j], "')", sep="")
-        eval(parse(text=new))
-    #  listoflists <- append(listoflists, list(children=(list(children, name=current_level$name[j]))))
+#------------------------------------------------------------------------------
+# Find positions in list
+
+ max_depth <- max(new_hierarchy$level)
+ max_id <- max(hierarchy$id)
+ index <- ""
+
+ # Set the root level order and initialize the column
+ level_id <- 1
+ current_level <- dplyr::filter(hierarchy, level==level_id )
+
+ for(i in 1:nrow(current_level)){
+   #order_index <- paste("$children[[",i,"]]", as.vector(current_level[i,]$name), sep="")
+   order_index <- paste("$children[[",i,"]]", sep="")
+   current_id <- current_level[i,]$id
+   hierarchy$order[hierarchy$id==current_id] <- order_index
+ }
+
+ for(level_id in 2:max_depth){
+   current_level <- dplyr::filter(hierarchy, level==level_id )
+
+   for(current_parent_id in 1:max_id){
+   current_parent <- dplyr::filter(current_level, parent_id==current_parent_id )
+
+   if(nrow(current_parent) > 0){
+
+     for(i in 1:nrow(current_parent)){
+       current_concept <- current_parent[i,]
+       current_id <- current_parent[i,]$id
+     #  current_parent_id <- current_parent[i, ]$parent_id
+
+       parent_index <- as.vector(hierarchy$order[hierarchy$id==current_parent_id])
+       order_index <- paste(parent_index, "$children[[",i,"]]", sep="")
+       hierarchy$order[hierarchy$id==current_id] <- order_index
       }
-    }
+     }
+   }
+ }
+ # -------------------------
+ # create the list
+ listoflists <- list(name="")
+ #max_level <- max(hierarchy$level)
+
+  for(i in 1:max_id) {
+          new <- paste("listoflists",
+                       hierarchy[i, ]$order
+                       , " <- ",
+                       "list(name='", hierarchy[i, ]$name, "')", sep="")
+          eval(parse(text=new))
   }
- } # End of try
+
 return(listoflists)
 }
 
