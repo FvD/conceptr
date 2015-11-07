@@ -8,7 +8,6 @@ hierarchy <- read.csv(system.file("concept-hierarchy.csv", package="conceptr"))
 test_that("the hierarchy table is translated to a correct list of lists", {
 # set up a reference hierarchy that has the correct structure expected from
 # the fromJSON import (as a list of lists in R)
-
   reference_hierarchy <- list(name="", children=list(
                             list(name="Level1-A", children=list(
                               list(name="Level2-AA", children=list(
@@ -32,42 +31,9 @@ test_that("the hierarchy table is translated to a correct list of lists", {
                           ))
 
 
+  test_list <- create_list(hierarchy)
   jsonified_hierarchy <- jsonify(hierarchy)
+  jsonified_reference <- jsonify(reference_hierarchy)
   # We cannot compare list of list directly, so we translate to json first).
   expect_that(jsonified_hierarchy, equals(reference_hierarchy))
-
-# =================================
-# working example to compare lists of lists
-
-  list_one <- list(name="", children=list(
-    list(name="Level1-A"),
-    list(name="Level1-B"),
-    list(name="Level1-C"),
-    list(name="Level1-D")
-    ))
-
-  list_two <- list(name="", children=list(
-    list(name="Level1-A"),
-    list(name="Level1-B"),
-    list(name="Level1-C"),
-    list(name="Level1-D")
-  ))
-
-library(jsonlite)
-jsonified_l1 <- toJSON(list_one)
-jsonified_l2 <- toJSON(list_two)
-jsonified_l1 == jsonified_l2
-# >[1] TRUE
-#
-list_three <- list(name="")
-
-list_four <- list(name="")
-list_four$children[[1]] <- list(name="Level1-A")
-list_four$children[[2]] <- list(name="Level1-B")
-list_four$children[[3]] <- list(name="Level1-C")
-list_four$children[[4]] <- list(name="Level1-D")
-
-new <- paste("listoflist$children", "[[", i, "]]", " <- ", "list(name='", name, "')", sep="")
-
-list_four$children[[1]]$children[[1]] <- list(name="Level1-AA")
-
+})
