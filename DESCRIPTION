@@ -6,9 +6,8 @@ Description: Tools to work with multilevel classes or multilevel features
     presented as concept hierarchies.
 Version: 0.1
 Date: 2015-10-13
-Authors@R: c(person("Frans", "van Dunné", , "github@innovateonline.nl", c("aut", "cre")),
-           person("Innovate Online", role="cph")
-           )
+Authors@R: c(person("Frans", "van Dunné", , "frans.vandunne@gmail.com", c("aut", "cre"))
+              )
 BugReports: https://github.com/fvd/conceptr/issues
 LazyData: TRUE
 Depends:
