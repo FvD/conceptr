@@ -1,4 +1,5 @@
-[![Travis-CI Build Status](https://travis-ci.org/FvD/conceptr.svg?branch=master)](https://travis-ci.org/FvD/conceptr)
+[![Travis-CI Build Status](https://travis-ci.org/FvD/conceptr.svg?branch=master)](https://travis-ci.org/FvD/conceptr) 
+[![Coverage Status](https://img.shields.io/codecov/c/github/FvD/conceptr/master.svg)](https://codecov.io/github/FvD/conceptr?branch=master)
 
 # conceptr
 Concept hierarchies are common in many knowledge areas and applications of
