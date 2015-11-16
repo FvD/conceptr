@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/FvD/conceptr.svg?branch=master)](https://travis-ci.org/FvD/conceptr)
+
 # conceptr
 Concept hierarchies are common in many knowledge areas and applications of
 statistics. They can be deceptively simple, as they are easy to intuit, but can
@@ -31,7 +33,7 @@ the data explicit so that it becomes easier to:
    included in the data set itself. For example, you have White Oaks and
    Chihuaha Oaks, but no entry for "Oaks". That higher order concept "Oak" is
    implicit in the data set and can be added by summing sub-level concept.
-2. Visualize the hierarchies as a tree using network3D.
+2. Visualize the hierarchies as a tree using networkD3.
 3. Inspect the data to see whether it conforms with the given hierarchy
 4. Visualize data in the hierarchy using ternary diagrams.
 
@@ -76,7 +78,7 @@ and
 The full names in the test data base include the levels, so Level1-A, Level2-AA
 etc.
 
-### Visualize hierchies
+### Visualize hierarchies
 
 ![example network diagram](https://raw.githubusercontent.com/FvD/conceptr/gh-pages/images/visualize_networkD3.png)
 
@@ -88,12 +90,12 @@ name.
  
 ### Planned 
 
-* Visualize hierarchy (create tree with network3D)
+* Visualize hierarchy (create tree with networkD3)
 * Inspect hierarchy (check the structure of the hierarchy)
 
 ## Example data
 There is a small example data set included that you can compare to your own.
-Please note that you preferably use R-style names (no spaces, no non-ascci) for
+Please note that you preferably use R-style names (no spaces, no non-ASCII) for
 the column names in the data file. The package will `make.normal` any names
 that it will find.
 
