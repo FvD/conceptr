@@ -1,6 +1,19 @@
 [![Travis-CI Build Status](https://travis-ci.org/FvD/conceptr.svg?branch=master)](https://travis-ci.org/FvD/conceptr) 
 [![Coverage Status](https://img.shields.io/codecov/c/github/FvD/conceptr/master.svg)](https://codecov.io/github/FvD/conceptr?branch=master)
 
+
+***
+Please look into
+[data.tree](https://cran.r-project.org/web/packages/data.tree/index.html)
+package first if you need a way to work with hierarchical data structured as
+trees. The `data.tree` package is mature and probably does what you need.
+
+This is a convenience package that includes amongst other things the posibility
+to read trees in self-referencing tables. There is no release yet, and is under
+active development. Be careful if you use the current development version as
+you may likely run into be errors. 
+***
+
 # conceptr
 Concept hierarchies are common in many knowledge areas and applications of
 statistics. They can be deceptively simple, as they are easy to intuit, but can
