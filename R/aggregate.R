@@ -45,22 +45,23 @@ aggregate_byname <- function(data, hierarchy, concept) {
   hierarchy$name <- make.names(hierarchy$name)
 
   root_parent <- hierarchy %>%
-    filter(name==parent_name)
+    filter(name == parent_name)
 
  children <- get_children(hierarchy, root_parent)
  children = as.vector(children$name)
 
-  # Sum parent + children with na.rm=TRUE
+  # Sum parent + children with na.rm = TRUE
   available_cols <- c(parent_name, children) %in% colnames(data)
-  if(available_cols){
+  if (available_cols) {
     selected_rows <- data %>%
       select(one_of(c(parent_name, children)[available_cols])) %>%
-      transmute(hsum=rowSums(., na.rm=TRUE))
-  result <- data %>%
-    select(-one_of(c(parent_name, children)))  %>%
-    cbind(selected_rows)
+      transmute(hsum = rowSums(., na.rm = TRUE))
 
-  names(result)[names(result)=="hsum"] <- paste(parent_name)
+    result <- data %>%
+      select(-one_of(c(parent_name, children)))  %>%
+      cbind(selected_rows)
+
+    names(result)[names(result) == "hsum"] <- paste(parent_name)
   } else {
   warning("No data available for the selected concepts")
   result <- data
@@ -82,14 +83,17 @@ aggregate_byname <- function(data, hierarchy, concept) {
 #' @export aggregate_atlevel
 aggregate_atlevel <- function(data, hierarchy, level) {
   # Get the names of the concepts at the requested level
-  selected_columns <- hierarchy %>%
-    filter(parent_id==level)
+  selected_level <- level
+  new_hierarchy <- add_hierarchy_level(hierarchy)
+
+  selected_columns <- new_hierarchy %>%
+    filter(level >= selected_level)
 
   column_names <- as.vector(make.names(selected_columns$name))
 
   # Roll up the data to the names at the requested level
   result <- data
-  for(i in 1:length(column_names)){
+  for (i in 1:length(column_names)) {
     result <- result %>%
        aggregate_byname(hierarchy, column_names[i])
   }
@@ -107,16 +111,16 @@ get_children <- function(hierarchy, parent){
 
  hierarchy$name <- make.names(hierarchy$name)
 
- children   <- data.frame("id"=NA, "name"=NA, "parent_id"=NA)[0,]
- new_parent <- data.frame("id"=NA, "name"=NA, "parent_id"=NA)[0,]
- result  <- data.frame("id"=NA, "name"=NA, "parent_id"=NA)[0,]
+ children   <- data.frame("id" = NA, "name" = NA, "parent_id" = NA)[0,]
+ new_parent <- data.frame("id" = NA, "name" = NA, "parent_id" = NA)[0,]
+ result  <- data.frame("id" = NA, "name" = NA, "parent_id" = NA)[0,]
 
  for(j in 1:nrow(hierarchy)){
    if(nrow(parent)>0){
      for(i in 1:nrow(parent)){
        parentID <- parent[i,]$id
        new_children <- hierarchy %>%
-        filter(parent_id==parentID)
+        filter(parent_id == parentID)
        children <- rbind(children, new_children)
        new_parent <- new_children
      }
