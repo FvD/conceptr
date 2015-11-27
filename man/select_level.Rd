@@ -19,6 +19,6 @@ the requested level does not exist give a warning.
 }
 \details{
 Note that you are only selecting, not aggregating. If you want to roll-up
-to any given level, use the aggregate_bylevel function instead.
+to any given level, use the aggregate_atlevel function instead.
 }
 

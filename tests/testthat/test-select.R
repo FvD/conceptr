@@ -2,21 +2,21 @@
 context("select_level")
 ###############################################################################
 
-data <- read.csv(system.file("data.csv", package="conceptr"))
-hierarchy <- read.csv(system.file("concept-hierarchy.csv", package="conceptr"))
+data <- read.csv(system.file("data.csv", package = "conceptr"))
+hierarchy <- read.csv(system.file("concept-hierarchy.csv", package = "conceptr"))
 
 
 test_that("selection of level with single column is correct", {
   selected_data <- select_level(data, hierarchy, 4)
   selected_level4.CABA <- selected_data$Level4.CABA
   #aggregated_cuticles <- data$Cuticles
-  expect_that(selected_level4[1], equals(data$Level4.CABA[1]))
-  expect_that(selected_level4[2], equals(data$Level4.CABA[2]))
-  expect_that(selected_level4[3], equals(data$Level4.CABA[3]))
-  expect_that(selected_level4[4], equals(data$Level4.CABA[4]))
-  expect_that(selected_level4[5], equals(data$Level4.CABA[5]))
-  # Special case with NA value in the data
-  expect_that(selected_level4[9], equals(0))
+  expect_that(selected_level4.CABA[1], equals(data$Level4.CABA[1]))
+  expect_that(selected_level4.CABA[2], equals(data$Level4.CABA[2]))
+  expect_that(selected_level4.CABA[3], equals(data$Level4.CABA[3]))
+  expect_that(selected_level4.CABA[4], equals(data$Level4.CABA[4]))
+  expect_that(selected_level4.CABA[5], equals(data$Level4.CABA[5]))
+  # Special case with NA valu.CABAe in the data
+  expect_that(selected_level4.CABA[9], equals(NA_integer_))
 })
 
 test_that("there is an error for non-existing level", {
@@ -35,12 +35,12 @@ test_that("selection of level with multiple columns is correct", {
   expect_that(selected_level2.AA[8], equals(data$Level2.AA[8]))
 })
 
-test_that("selection and aggregation of with empty (NA) columns is correct", {
-  selected_data <- select_level(data, hierarchy, 1)
-  selected_Level1C <- selected_data$Level1.C
-  expect_that(selected_Level1C[1], equals(data$Level1.C[1]))
-  expect_that(selected_Level1C[2], equals(data$Level1.C[2]))
-  expect_that(selected_Level1C[3], equals(data$Level1.C[3]))
-  expect_that(selected_Level1C[4], equals(data$Level1.C[4]))
+test_that("selection with empty (NA) columns is correct", {
+  selected_data <- select_level(data, hierarchy, 3)
+  selected_Level3.CAB <- selected_data$Level3.CAB
+  expect_that(selected_Level3.CAB[1], equals(NA))
+  expect_that(selected_Level3.CAB[2], equals(NA))
+  expect_that(selected_Level3.CAB[3], equals(NA))
+  expect_that(selected_Level3.CAB[4], equals(NA))
 })
 
