@@ -195,7 +195,7 @@ test_that("Selection and aggregation of level with single column is correct", {
 })
 
 test_that("there is an error for non-existing level", {
-  aggregated_level1D <- select_level(data, hierarchy, 23)
+  aggregated_level23 <- aggregate_atlevel(data, hierarchy, 23)
 })
 
 test_that("selection  and aggregation of level with multiple columns is correct", {

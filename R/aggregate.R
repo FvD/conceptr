@@ -93,9 +93,14 @@ aggregate_atlevel <- function(data, hierarchy, level) {
 
   # Roll up the data to the names at the requested level
   result <- data
-  for (i in 1:length(column_names)) {
-    result <- result %>%
-       aggregate_byname(hierarchy, column_names[i])
+  if (length(column_names) > 0) {
+    for (i in 1:length(column_names)) {
+      result <- result %>%
+         aggregate_byname(hierarchy, column_names[i])
+    }
+  } else {
+    print("That level does not exist")
+    result <- 0
   }
 
   return(result)
