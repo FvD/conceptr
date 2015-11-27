@@ -86,6 +86,7 @@ add_hierarchy_level <- function(hierarchy){
 #' @param hierarchy
 #' @param level
 #' @import dplyr
+#' @export create_list
 create_list <- function(hierarchy, level=1) {
   hierarchy$name <- make.names(hierarchy$name)
 
