@@ -5,20 +5,12 @@
 #'
 #' Note that you are only selecting, not aggregating. If you want to roll-up
 #' to any given level, use the aggregate_atlevel function instead.
-#' @param data The data set
-#' @param hierarchy The hierachy definitoin
+#'
+#' @param data Data object to be included
+#' @param hierarchy The hierachy definition
 #' @param level The level of interest
 #' @export select_level
 select_level <- function(data, hierarchy, level) {
-#  # Get the names of the concepts at the requested level
-#  selected_columns <- hierarchy %>%
-#    filter(parent_id == level)
-#
-#  column_names <- as.vector(make.names(selected_columns$name))
-#
-#  result <- result %>%
-#    select(one_of(column_names))
-#--------------------
   selected_level <- level
   new_hierarchy <- add_hierarchy_level(hierarchy)
 

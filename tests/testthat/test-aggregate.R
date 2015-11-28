@@ -139,7 +139,7 @@ test_that("aggregation of multiple columns is correct", {
                                                 data$Level2.AA[5],
                                                 data$Level2.AB[5],
                                                 data$Level3.AAA[5],
-                                                na.rm=TRUE)))
+                                                na.rm = TRUE)))
   expect_that(aggregated_Level1A[8], equals(sum(data$Level1.A[8],
                                                 data$Level2.AA[8],
                                                 data$Level2.AB[8],

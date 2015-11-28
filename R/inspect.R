@@ -4,7 +4,7 @@
 #' approaches: Counts are made to the lowest possible level (this is common in
 #' biological sciences), or counts are made to a specific level (as may be more
 #' common in competency data, where the value is part of the definition of the
-#' model). 
+#' model).
 #'
 #' We need to know which is which, so we test when a higher order concept has
 #' children in the dataset whether these are already a sum of the lower

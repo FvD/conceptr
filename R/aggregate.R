@@ -1,12 +1,10 @@
-library(dplyr)
-
 #' Aggregate all children into parents
 #'
 #' Aggregate data by calling the top-level hierarchy that is required plus any
 #' additional columns to be included.
 #'
-#' Note that a hierarchy data frame is required, which is a data frame consisting
-#' of the Class ID, Class Name and Parent ID.
+#' Note that a hierarchy data frame is required, which is a data frame
+#' consisting of the Class ID, Class Name and Parent ID.
 #'
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
@@ -15,7 +13,7 @@ aggregate_all <- function(data, hierarchy) {
   all_levels <- make.names(hierarchy$name)
   all_colls <- data[,0]
 
-  for(i in 1:length(all_levels)){
+  for (i in 1:length(all_levels) ) {
     new_coll <- aggregate_byname(data, hierarchy, all_levels[i])[all_levels[i]]
     all_colls <- cbind(all_colls, new_coll)
   }
@@ -28,8 +26,8 @@ aggregate_all <- function(data, hierarchy) {
 #' Aggregate data by calling the top-level hierarchy that is required plus any
 #' additional columns to be included.
 #'
-#' Note that a hierarchy data frame is required, which is a data frame consisting
-#' of the Class ID, Class Name and Parent ID.
+#' Note that a hierarchy data frame is required, which is a data frame
+#' consisting of the Class ID, Class Name and Parent ID.
 #'
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
@@ -38,7 +36,6 @@ aggregate_all <- function(data, hierarchy) {
 aggregate_byname <- function(data, hierarchy, concept) {
   # Lookup children of colname and make a vector of child names
   parent_name <- make.names(concept)
-  max_level <- max(hierarchy$id)
 
   colnames(data) <- make.names(colnames(data))
   colnames(hierarchy) <- c("id","name", "parent_id")
@@ -75,8 +72,9 @@ aggregate_byname <- function(data, hierarchy, concept) {
 #' cut-off point so that any levels below will be rolled up to the requested
 #' level, and any levels above will remain as they are.
 #'
-#' Note that a hierarchy data frame is required, which is a data frame consisting
-#' of the Class ID, Class Name and Parent ID.
+#' Note that a hierarchy data frame is required, which is a data frame
+#' consisting of the Class ID, Class Name and Parent ID.
+#'
 #' @param data Data object to be included
 #' @param hierarchy Data frame containing hierarchy data
 #' @param level The level of interest
@@ -106,12 +104,12 @@ aggregate_atlevel <- function(data, hierarchy, level) {
   return(result)
 }
 
-# get_children by name
-#
-# Returns a data.frame with all children of a named concept.
-#
-# @param data Data object to be included
-# @param hierarchy Data frame containing hierarchy data
+#' get_children by name
+#'
+#' Returns a data.frame with all children of a named concept.
+#'
+#' @param data Data object to be included
+#' @param hierarchy Data frame containing hierarchy data
 get_children <- function(hierarchy, parent){
 
  hierarchy$name <- make.names(hierarchy$name)
@@ -120,9 +118,9 @@ get_children <- function(hierarchy, parent){
  new_parent <- data.frame("id" = NA, "name" = NA, "parent_id" = NA)[0,]
  result  <- data.frame("id" = NA, "name" = NA, "parent_id" = NA)[0,]
 
- for(j in 1:nrow(hierarchy)){
-   if(nrow(parent)>0){
-     for(i in 1:nrow(parent)){
+ for (j in 1:nrow(hierarchy)) {
+   if (nrow(parent) > 0) {
+     for (i in 1:nrow(parent)) {
        parentID <- parent[i,]$id
        new_children <- hierarchy %>%
         filter(parent_id == parentID)
@@ -131,7 +129,6 @@ get_children <- function(hierarchy, parent){
      }
    }
   parent <- new_parent
-  test <- rbind(result, children)
  }
  children <- distinct(children, id)
   return(children)

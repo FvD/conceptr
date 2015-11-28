@@ -1,7 +1,3 @@
-library(networkD3)
-library(ggtern)
-library(jsonlite)
-
 #' Visualize concept hierarchy
 #'
 #' Visualize all the variables at the given level (level 1 for the highest
@@ -33,7 +29,7 @@ visualize_ternary <- function(data, hierarchy, plot_categories, color) {
   plot_data <-  cbind(one, two, three, plot_legend)
   colnames(plot_data) <- c("one", "two", "three", "Legend")
 
-  p <- ggtern(data=plot_data, aes(x=one, y=two, z=three, color=Legend))
+  p <- ggtern(data = plot_data, aes(x = one, y = two, z = three, color = Legend))
   p <- p + theme_rgbw() + geom_point()
   p <- p + xlab(plot_categories[1]) + ylab(plot_categories[2]) + zlab(plot_categories[3])
   p
