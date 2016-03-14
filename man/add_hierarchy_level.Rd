@@ -6,6 +6,9 @@
 \usage{
 add_hierarchy_level(hierarchy)
 }
+\arguments{
+\item{hierarchy}{Data frame containing hierarchy data}
+}
 \description{
 Add hierarchy level to self-referential table
 }

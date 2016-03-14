@@ -19,7 +19,7 @@ cut-off point so that any levels below will be rolled up to the requested
 level, and any levels above will remain as they are.
 }
 \details{
-Note that a hierarchy data frame is required, which is a data frame consisting
-of the Class ID, Class Name and Parent ID.
+Note that a hierarchy data frame is required, which is a data frame
+consisting of the Class ID, Class Name and Parent ID.
 }
 

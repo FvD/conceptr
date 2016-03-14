@@ -16,7 +16,7 @@ Aggregate data by calling the top-level hierarchy that is required plus any
 additional columns to be included.
 }
 \details{
-Note that a hierarchy data frame is required, which is a data frame consisting
-of the Class ID, Class Name and Parent ID.
+Note that a hierarchy data frame is required, which is a data frame
+consisting of the Class ID, Class Name and Parent ID.
 }
 

@@ -6,6 +6,9 @@
 \usage{
 add_child_id(hierarchy)
 }
+\arguments{
+\item{hierarchy}{Data frame containing hierarchy data}
+}
 \description{
 Add Child ID to self-referential table
 }

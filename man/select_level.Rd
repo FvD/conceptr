@@ -7,9 +7,9 @@
 select_level(data, hierarchy, level)
 }
 \arguments{
-\item{data}{The data set}
+\item{data}{Data object to be included}
 
-\item{hierarchy}{The hierachy definitoin}
+\item{hierarchy}{The hierachy definition}
 
 \item{level}{The level of interest}
 }

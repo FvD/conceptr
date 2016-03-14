@@ -6,6 +6,11 @@
 \usage{
 create_list(hierarchy, level = 1)
 }
+\arguments{
+\item{hierarchy}{Data frame containing hierarchy data}
+
+\item{level}{The level of interest}
+}
 \description{
 To work with networkD3 we need the hierarchy as a list of lists following
 JSON structure.  This function takes the hierachy table and converts it to
