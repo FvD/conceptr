@@ -3,7 +3,7 @@
 #' Visualize all the variables at the given level (level 1 for the highest
 #' level) in a network3D diagram. If the requested levels do not exist give a
 #' warning
-#' @param hierarchy
+#' @param hierarchy Data frame containing hierarchy data
 #' @export visualize_hierarchy
 visualize_hierarchy <- function(hierarchy) {
   listoflists <- create_list(hierarchy)
@@ -15,10 +15,10 @@ visualize_hierarchy <- function(hierarchy) {
 #'
 #' Get all the variables at the given level (level 1 for the highest level). If
 #' the requested levels do not exist give a warning
-#' @param data
-#' @param hierarchy
-#' @param plot_categories
-#' @param color
+#' @param data Data object to be included
+#' @param hierarchy Data frame containing hierarchy data
+#' @param plot_categories Plot categories
+#' @param color Plot color
 #' @export visualize_ternary
 visualize_ternary <- function(data, hierarchy, plot_categories, color) {
   plot_legend <- color

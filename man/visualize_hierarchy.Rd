@@ -6,6 +6,9 @@
 \usage{
 visualize_hierarchy(hierarchy)
 }
+\arguments{
+\item{hierarchy}{Data frame containing hierarchy data}
+}
 \description{
 Visualize all the variables at the given level (level 1 for the highest
 level) in a network3D diagram. If the requested levels do not exist give a

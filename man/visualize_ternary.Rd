@@ -6,6 +6,15 @@
 \usage{
 visualize_ternary(data, hierarchy, plot_categories, color)
 }
+\arguments{
+\item{data}{Data object to be included}
+
+\item{hierarchy}{Data frame containing hierarchy data}
+
+\item{plot_categories}{Plot categories}
+
+\item{color}{Plot color}
+}
 \description{
 Get all the variables at the given level (level 1 for the highest level). If
 the requested levels do not exist give a warning
